@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Denarius Principle | Denaris Capital</title>
+    <meta name="description" content="A reflection on why Denaris bears its name and why every currency, ancient or modern, is only as strong as its trust.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-ink: #0a0c0f;
+            --color-heading: #1F1F1F;
+            --color-body: #4A4A4A;
+            --color-secondary: #7A7A7A;
+            --color-secondary: #7A7A7A;
+            --color-cloud: #c4cdd6;
+            --color-ivory: #f5f3ef;
+            --color-paper: #faf9f7;
+            --color-primary: #5046E5;
+            --color-primary-light: #7B73FF;
+            --color-primary-dark: #3D35B0;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Cormorant Garamond', Georgia, serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-display);
+            background-color: var(--color-paper);
+            color: var(--color-body);
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img { height: 36px; width: auto; }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            color: var(--color-body);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--color-primary); }
+
+        /* Dropdown Menu */
+        .nav-dropdown { position: relative; }
+        .nav-dropdown-menu {
+            position: absolute; top: 100%; left: 0;
+            background: var(--color-paper); border: 1px solid var(--color-cloud);
+            padding: var(--spacing-sm); min-width: 200px;
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: all 0.3s ease; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .nav-dropdown-menu a { display: block; padding: 0.5rem 0; font-size: 0.8rem !important; text-transform: none !important; }
+
+        .article-header {
+            padding: calc(var(--spacing-xl) + 60px) var(--spacing-md) var(--spacing-lg);
+            background: linear-gradient(180deg, #f5f3ef 0%, #faf9f7 100%);
+            color: var(--color-ivory);
+        }
+
+        .article-header-inner {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .article-category { color: var(--color-primary-light); }
+        .article-date { color: var(--color-body); }
+
+        .article-header h1 { color: #1a1d24;
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .article-subtitle {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--color-cloud);
+        }
+
+        .article-content {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            color: var(--color-body);
+        }
+
+        .article-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--color-body);
+            margin: var(--spacing-lg) 0 var(--spacing-md);
+        }
+
+        .article-content blockquote {
+            border-left: 3px solid var(--color-primary);
+            padding-left: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--color-primary-dark);
+        }
+
+        .article-content strong { color: var(--color-body); font-weight: 600; }
+        .article-content em { font-style: italic; }
+
+        .highlight-box {
+            background: var(--color-ivory);
+            border-left: 3px solid var(--color-primary);
+            padding: var(--spacing-md);
+            margin: var(--spacing-md) 0;
+        }
+
+        .highlight-box p { margin-bottom: 0.5rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+
+        .article-footer {
+            border-top: 1px solid var(--color-cloud);
+            padding-top: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+
+        .article-footer p {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--color-body);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-lg);
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover { color: var(--color-primary-dark); }
+        .back-link svg { width: 16px; height: 16px; }
+
+        footer {
+            padding: var(--spacing-lg) var(--spacing-md);
+            background: var(--color-paper); border-top: 1px solid var(--color-cloud);
+            color: var(--color-body);
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo img {
+            height: 36px;
+            
+            
+        }
+
+        .footer-copy { font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .article-header { padding: calc(var(--spacing-lg) + 60px) var(--spacing-sm) var(--spacing-md); }
+            .article-content { padding: var(--spacing-lg) var(--spacing-sm); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Denaris Capital">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li class="nav-dropdown">
+                    <a href="index.html#strategy">Strategy</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="calculator.html">Property Deal Analyzer</a>
+                    </div>
+                </li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <div class="article-header-inner">
+            <div class="article-meta">
+                <span class="article-category">Historical Analysis</span>
+                <span class="article-date">October 9, 2025</span>
+            </div>
+            <h1>The Denarius Principle</h1>
+            <p class="article-subtitle">A reflection on why Denaris bears its name and why every currency, ancient or modern, is only as strong as its trust.</p>
+        </div>
+    </header>
+
+    <article class="article-content">
+        <a href="insights.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            Back to Insights
+        </a>
+
+        <p>When Emperor Diocletian debased Rome's silver coinage in the third century—his aptly named <em>denarius</em> (more on that later)—merchants did not panic, they adapted. They began to weigh coins before accepting them, re-calibrating trust by measurement rather than decree. The coins still bore the emperor's image, but the silver within had thinned. The empire had not collapsed, yet its monetary map no longer matched its territory. The result was drift.</p>
+
+        <p>Monetary systems rarely fail overnight; they erode in confidence first. Two thousand years later, the same pattern appears in subtler form. The Federal Reserve, long regarded as the compass of the global economy, now points in several directions at once. Markets, unable to rely on a single reading, have begun to navigate without one.</p>
+
+        <blockquote>
+            Gold currently trades above $4,000 per ounce, Bitcoin consolidates near $124,000 & the S&P 500 sits at record highs.
+        </blockquote>
+
+        <p>Assets that historically moved in opposition are rising together. Analysts call it <strong>"the debasement trade"</strong>—a phrase meant to capture not panic, but the quiet unease of investors watching the world's dominant currency edge toward abstraction. What becomes of a debt-heavy system when its instruments of trust begin to thin, as they once did under Diocletian?</p>
+
+        <h2>Markets Vote Continuously</h2>
+
+        <p>As such, markets do not wait for clarity. They vote continuously, reallocating when guidance falters. In recent months, capital has migrated toward assets with intrinsic or verifiable value: gold, commodities, and digital assets. Gold ETFs recorded their largest inflows on record in September, lifting total holdings above 3,800 tonnes. Institutional adoption of Bitcoin has accelerated as well, supported by the expansion of spot ETFs managed by major asset firms. Meanwhile, U.S. Treasuries face weak demand at auctions, compelling the Treasury toward modest buyback operations and effectively forcing it to shoulder more of its own debt issuance burden.</p>
+
+        <p>With this backdrop, the U.S. dollar has weakened roughly ten percent this year, the sharpest annual decline in four decades. Together, these moves suggest that the so-called <strong>"debasement trade"</strong> is no longer a fringe narrative but a reflection of how markets behave when trust in the compass begins to waver.</p>
+
+        <h2>The Echo of History</h2>
+
+        <p>The pattern echoes history. In the 1970s, under Chairman Arthur Burns, the Federal Reserve oscillated between tightening to contain inflation and easing to support employment. That indecision allowed inflation to average above six percent and gold to rise <strong>twenty-fold</strong> by decade's end.</p>
+
+        <div class="highlight-box">
+            <p>Half a century later, the policy choices of the 1970s deepened monetary debasement and permanently altered the trajectory of productivity, wages, and debt.</p>
+            <p>The divergence between worker compensation and productivity that began in 1971 has never reversed.</p>
+        </div>
+
+        <h2>Why Denaris</h2>
+
+        <p>At Denaris, we view this development as a rational adaptation to a changing landscape. The search for tangible value is not a rebellion against the system but an adjustment to its limits. The migration toward assets with intrinsic value—whether metals, land, or digital assets—reflects an enduring pattern.</p>
+
+        <p>When Diocletian thinned Rome's silver content in the Denarius, merchants learned to weigh before they trusted. In our own time, the lesson is much the same. Policy can guide, but it cannot guarantee. It is no coincidence that we chose our name from Rome's silver coin, the <em>denarius</em>. Its long arc—from credibility to debasement—encapsulates the central lesson of monetary history.</p>
+
+        <p><strong>Money endures only as long as trust in its value is preserved—and that trust erodes when those who issue it trade discipline for convenience.</strong></p>
+
+        <div class="article-footer">
+            <p>The views expressed are those of Denaris Capital and do not constitute investment advice.</p>
+        </div>
+    </article>
+
+    <footer>
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo">
+                <img src="logo.png" alt="Denaris Capital">
+            </a>
+            <div class="footer-copy">© 2026 Denaris Capital, S.A.P.I. de C.V.</div>
+        </div>
+    </footer>
+</body>
+</html>

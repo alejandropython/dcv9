@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Deal Analyzer | Denaris Capital</title>
+    <meta name="description" content="A proprietary underwriting tool for preliminary real estate analysis from Denaris Capital.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================
+           DENARIS CAPITAL — DESIGN CONSTITUTION
+           ========================================== */
+        
+        :root {
+            /* LOCKED COLOR PALETTE */
+            --color-heading: #1F1F1F;
+            --color-body: #4A4A4A;
+            --color-secondary: #7A7A7A;
+            --color-quote: #4A36BC;
+            --color-link: #2F2F2F;
+            --color-link-hover: #6A6A6A;
+            --color-primary: #5046E5;
+            --color-primary-light: #7B73FF;
+            --color-primary-subtle: rgba(80, 70, 229, 0.08);
+            
+            /* Background colors */
+            --color-paper: #faf9f7;
+            --color-ivory: #f5f3ef;
+            --color-cloud: #c4cdd6;
+            --color-charcoal: #1a1d24;
+            
+            /* LOCKED TYPOGRAPHY */
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            
+            /* Desktop sizes */
+            --size-hero: 48px;
+            --size-section: 32px;
+            --size-subheading: 22px;
+            --size-body: 16px;
+            --size-meta: 14px;
+            --size-caption: 12px;
+            
+            /* Line heights */
+            --lh-hero: 1.15;
+            --lh-section: 1.25;
+            --lh-subheading: 1.35;
+            --lh-body: 1.65;
+            --lh-meta: 1.6;
+            --lh-caption: 1.4;
+            
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-display);
+            background-color: var(--color-paper);
+            color: var(--color-body);
+            line-height: var(--lh-body);
+            font-size: var(--size-body);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img { height: 36px; width: auto; }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-display);
+            font-size: var(--size-meta);
+            color: var(--color-body);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--color-primary); }
+
+        /* Dropdown Menu */
+        .nav-dropdown { position: relative; }
+
+        .nav-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--color-paper);
+            border: 1px solid var(--color-cloud);
+            padding: var(--spacing-sm);
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-dropdown:hover .nav-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 0.5rem 0;
+            font-size: var(--size-meta) !important;
+            text-transform: none !important;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: calc(var(--spacing-xl) + 60px) var(--spacing-md) var(--spacing-lg);
+            background: var(--color-charcoal);
+            color: var(--color-ivory);
+        }
+
+        .page-header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: var(--size-caption);
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--color-primary-light);
+            margin-bottom: var(--spacing-sm);
+            line-height: var(--lh-caption);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: clamp(32px, 5vw, var(--size-hero));
+            font-weight: 300;
+            line-height: var(--lh-hero);
+            color: white;
+        }
+
+        .page-header p {
+            font-family: var(--font-display);
+            font-size: var(--size-body);
+            color: var(--color-cloud);
+            max-width: 500px;
+            margin-top: var(--spacing-sm);
+            line-height: var(--lh-body);
+        }
+
+        .calculator-badge {
+            font-family: var(--font-display);
+            font-size: var(--size-caption);
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background: var(--color-primary-subtle);
+            color: var(--color-primary-light);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-primary);
+            line-height: var(--lh-caption);
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            padding: var(--spacing-lg) var(--spacing-md);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .calculator-wrapper {
+            background: white;
+            border: 1px solid var(--color-cloud);
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .calculator-wrapper iframe {
+            width: 100%;
+            height: 85vh;
+            min-height: 700px;
+            border: none;
+            display: block;
+        }
+
+        .calculator-note {
+            margin-top: var(--spacing-md);
+            font-family: var(--font-display);
+            font-size: var(--size-meta);
+            color: var(--color-secondary);
+            text-align: center;
+            line-height: var(--lh-meta);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-display);
+            color: var(--color-primary-light);
+            text-decoration: none;
+            font-size: var(--size-meta);
+            font-weight: 500;
+            margin-bottom: var(--spacing-sm);
+            line-height: var(--lh-meta);
+        }
+
+        .back-link:hover { color: white; }
+        .back-link svg { width: 16px; height: 16px; }
+
+        /* Footer */
+        footer {
+            padding: var(--spacing-lg) var(--spacing-md);
+            background: var(--color-paper);
+            border-top: 1px solid var(--color-cloud);
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo img { height: 36px; }
+
+        .footer-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-family: var(--font-display);
+            font-size: var(--size-meta);
+            color: var(--color-secondary);
+            text-decoration: none;
+            line-height: var(--lh-meta);
+        }
+
+        .footer-links a:hover { color: var(--color-link-hover); }
+
+        .footer-copy {
+            font-family: var(--font-display);
+            font-size: var(--size-meta);
+            color: var(--color-secondary);
+            line-height: var(--lh-meta);
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .nav-links { display: none; }
+            .page-header-inner { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media (max-width: 640px) {
+            .footer-inner {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .calculator-wrapper iframe {
+                height: 70vh;
+                min-height: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Denaris Capital">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li class="nav-dropdown">
+                    <a href="index.html#strategy">Strategy</a>
+                    <div class="nav-dropdown-menu">
+                        <a href="calculator.html">Property Deal Analyzer →</a>
+                    </div>
+                </li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="insights.html">Insights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="page-header-inner">
+            <div>
+                <a href="index.html#strategy" class="back-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                    </svg>
+                    Back to Strategy
+                </a>
+                <div class="section-label">Analysis Tools</div>
+                <h1>Property Deal Analyzer</h1>
+                <p>A proprietary underwriting tool for preliminary real estate analysis. Input deal parameters to evaluate potential returns and risk metrics.</p>
+            </div>
+            <span class="calculator-badge">Interactive Tool</span>
+        </div>
+    </header>
+
+    <section class="calculator-section">
+        <div class="calculator-wrapper">
+            <iframe src="https://denarispropertyscreenerwix.replit.app/" title="Denaris Property Calculator" loading="lazy"></iframe>
+        </div>
+        <p class="calculator-note">This tool is for preliminary screening purposes only. For institutional inquiries or detailed analysis, contact our team directly at equipo@denariscapital.com</p>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo">
+                <img src="logo.png" alt="Denaris Capital">
+            </a>
+            <ul class="footer-links">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="insights.html">Insights</a></li>
+            </ul>
+            <div class="footer-copy">© 2026 Denaris Capital, S.A.P.I. de C.V.</div>
+        </div>
+    </footer>
+</body>
+</html>

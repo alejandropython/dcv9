@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denaris Capital | Global Real Estate Investment</title>
+    <meta name="description" content="Denaris Capital is a global real estate investment firm committed to delivering durable, long-term returns through disciplined capital allocation and portfolio management.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================
+           DENARIS CAPITAL — DESIGN CONSTITUTION
+           ========================================== */
+        
+        :root {
+            /* LOCKED COLOR PALETTE */
+            --color-heading: #1F1F1F;
+            --color-body: #4A4A4A;
+            --color-secondary: #7A7A7A;
+            --color-quote: #4A36BC;
+            --color-link: #2F2F2F;
+            --color-link-hover: #6A6A6A;
+            --color-primary: #5046E5;
+            --color-primary-subtle: rgba(80, 70, 229, 0.08);
+            
+            /* Background colors */
+            --color-paper: #faf9f7;
+            --color-ivory: #f5f3ef;
+            --color-cloud: #e0e0e0;
+            --color-charcoal: #1a1d24;
+            
+            /* LOCKED TYPOGRAPHY SCALE */
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            
+            /* Desktop sizes */
+            --size-hero: 48px;
+            --size-section: 32px;
+            --size-subheading: 22px;
+            --size-body: 16px;
+            --size-meta: 14px;
+            --size-caption: 12px;
+            --size-quote: 18px;
+            
+            /* Line heights */
+            --lh-hero: 1.15;
+            --lh-section: 1.25;
+            --lh-subheading: 1.35;
+            --lh-body: 1.65;
+            --lh-meta: 1.6;
+            --lh-caption: 1.4;
+            --lh-quote: 1.6;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-display);
+            background: var(--color-paper);
+            color: var(--color-body);
+            font-size: var(--size-body);
+            line-height: var(--lh-body);
+            padding-bottom: 80px;
+        }
+
+        /* Typography - Strict System */
+        h1 {
+            font-family: var(--font-display);
+            font-size: var(--size-hero);
+            font-weight: 300;
+            line-height: var(--lh-hero);
+            color: var(--color-heading);
+        }
+        
+        h2 {
+            font-family: var(--font-display);
+            font-size: var(--size-section);
+            font-weight: 400;
+            line-height: var(--lh-section);
+            color: var(--color-heading);
+        }
+        
+        h3 {
+            font-family: var(--font-display);
+            font-size: var(--size-subheading);
+            font-weight: 400;
+            line-height: var(--lh-subheading);
+            color: var(--color-heading);
+        }
+        
+        h4 {
+            font-family: var(--font-display);
+            font-size: var(--size-body);
+            font-weight: 500;
+            line-height: var(--lh-body);
+            color: var(--color-heading);
+        }
+        
+        p {
+            font-family: var(--font-display);
+            font-size: var(--size-body);
+            line-height: var(--lh-body);
+            color: var(--color-body);
+            margin-bottom: 1rem;
+        }
+        
+        p:last-child { margin-bottom: 0; }
+        
+        a {
+            font-family: var(--font-display);
+            color: var(--color-link);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover { color: var(--color-link-hover); }
+
+        .container { max-width: 600px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Accent styling */
+        .accent { color: var(--color-primary); }
+        .italic { font-style: italic; }
+
+        /* ========== MOBILE STYLES (Default) ========== */
+        
+        /* Section Labels - Medium weight */
+        .section-label {
+            font-family: var(--font-display);
+            font-size: var(--size-meta);
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            line-height: var(--lh-meta);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Top Nav */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(235, 232, 226, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 15px 20px;
+            z-index: 100;
+            border-bottom: 1px solid var(--color-cloud);
+        }
+        
+        .top-nav .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .top-nav img { height: 28px; }
+        .nav-links { display: none; list-style: none; }
+        .nav-dropdown { position: relative; }
+        
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            border: 1px solid var(--color-cloud);
+            padding: 10px 15px;
+            min-width: 200px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+        
+        .nav-dropdown-menu a {
+            display: block;
+            padding: 8px 0;
+            font-size: var(--size-meta);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 20px 60px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-paper) 0%, var(--color-ivory) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 70% 30%, var(--color-primary-subtle) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        
+        .hero-decoration { display: none; }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-description {
+            font-size: var(--size-body);
+            color: var(--color-body);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--color-primary);
+            color: white;
+            padding: 15px 30px;
+            font-size: var(--size-meta);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-cta:hover { background: #3D35B0; color: white; }
+        .hero-cta svg { width: 18px; height: 18px; }
+
+        /* Sections */
+        section { padding: 50px 20px; }
+
+        /* About */
+        .about { background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-paper) 100%); }
+        .about-grid { display: block; }
+        
+        .quote {
+            border-left: 2px solid var(--color-quote);
+            padding-left: 20px;
+            margin: 25px 0;
+        }
+        
+        .quote p {
+            font-size: var(--size-quote);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--color-quote);
+            line-height: var(--lh-quote);
+        }
+        
+        .quote-attribution {
+            font-size: var(--size-meta);
+            color: var(--color-secondary);
+            display: block;
+            margin-top: 0.5rem;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        /* Services */
+        .services { background: var(--color-paper); }
+        .section-header { text-align: center; margin-bottom: 30px; }
+        .services-grid { display: block; }
+        
+        .service-card {
+            background: white;
+            border: 1px solid var(--color-cloud);
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .service-card:hover { border-color: var(--color-primary); }
+        .service-card h3 { margin-bottom: 10px; }
+        .service-card p { font-size: var(--size-body); }
+
+        /* Strategy */
+        .strategy { background: var(--color-paper); }
+        .strategy-intro { display: block; margin-bottom: 30px; }
+        
+        .strategy-emphasis {
+            color: var(--color-quote);
+            font-style: italic;
+            font-weight: 300;
+        }
+        
+        .strategy-tools { display: none; }
+        
+        .pillars { display: block; }
+        
+        .pillar {
+            background: white;
+            border: 1px solid var(--color-cloud);
+            padding: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .pillar:hover { border-color: var(--color-primary); }
+        
+        .pillar-number {
+            font-size: 40px;
+            font-weight: 300;
+            color: var(--color-cloud);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        
+        .pillar:hover .pillar-number { color: var(--color-primary); }
+        .pillar h3 { margin-bottom: 10px; }
+
+        /* Team */
+        .team { background: var(--color-paper); }
+        .team-grid { display: block; }
+        
+        .team-card {
+            background: white;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+        
+        .team-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: var(--color-ivory);
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+        
+        .team-info { padding: 20px; }
+        .team-info h3 { margin-bottom: 5px; }
+        
+        .team-role {
+            font-size: var(--size-caption);
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            display: block;
+            line-height: var(--lh-caption);
+        }
+        
+        .team-advisors { display: block; }
+
+        /* Insights */
+        .insights { background: var(--color-ivory); }
+        
+        .insights-header {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .insights-link {
+            font-size: var(--size-meta);
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-link);
+        }
+        
+        .insights-link:hover { color: var(--color-link-hover); }
+        
+        .insights-grid { display: block; }
+        
+        .insight-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: block;
+            border-left: 2px solid var(--color-primary);
+        }
+        
+        .insight-date {
+            font-size: var(--size-caption);
+            color: var(--color-secondary);
+            line-height: var(--lh-caption);
+        }
+        
+        .insight-category {
+            font-size: var(--size-caption);
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+            line-height: var(--lh-caption);
+        }
+        
+        .insight-card h4 {
+            font-size: var(--size-subheading);
+            font-weight: 400;
+            color: var(--color-heading);
+            margin-bottom: 8px;
+            line-height: var(--lh-subheading);
+        }
+        
+        .insight-card p {
+            font-size: var(--size-meta);
+            color: var(--color-body);
+            line-height: var(--lh-meta);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-charcoal);
+            color: white;
+            padding: 40px 20px 100px;
+        }
+        
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .footer-logo img { height: 28px; }
+        .footer-right { text-align: right; }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            font-size: var(--size-meta);
+            color: var(--color-secondary);
+        }
+        
+        .footer-links a:hover { color: var(--color-primary); }
+        
+        .footer-address, .footer-copy {
+            font-size: var(--size-caption);
+            color: var(--color-secondary);
+            line-height: var(--lh-caption);
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            border-top: 1px solid var(--color-cloud);
+            z-index: 100;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--color-secondary);
+            font-size: 10px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .bottom-nav a:hover { color: var(--color-primary); }
+        .bottom-nav svg { width: 22px; height: 22px; margin-bottom: 4px; }
+
+        /* Animation for desktop */
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(-50%); }
+            50% { transform: translateY(calc(-50% - 10px)); }
+        }
+
+        /* ========== DESKTOP STYLES ========== */
+        @media (min-width: 1024px) {
+            body { padding-bottom: 0; }
+            .container { max-width: 1400px; padding: 0 2rem; }
+            
+            .bottom-nav { display: none; }
+            
+            .nav-links {
+                display: flex;
+                gap: 3rem;
+            }
+            
+            .nav-links a {
+                font-size: var(--size-meta);
+                color: var(--color-body);
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+            }
+            
+            .nav-links a:hover { color: var(--color-primary); }
+            
+            .top-nav {
+                padding: 1rem 2rem;
+                background: rgba(250, 249, 247, 0.95);
+            }
+            
+            .top-nav img { height: 36px; }
+            
+            /* Hero Desktop */
+            .hero {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                padding: 8rem 2rem;
+                text-align: left;
+            }
+            
+            .hero::before {
+                width: 60%;
+                background: 
+                    radial-gradient(ellipse at 70% 30%, var(--color-primary-subtle) 0%, transparent 60%),
+                    radial-gradient(ellipse at 90% 80%, rgba(80, 70, 229, 0.05) 0%, transparent 50%);
+            }
+            
+            .hero-decoration {
+                display: block;
+                position: absolute;
+                right: 5%;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 400px;
+                height: 400px;
+                opacity: 0.12;
+                animation: subtleFloat 6s ease-in-out infinite;
+            }
+            
+            .hero-decoration img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+            
+            .hero h1 { font-size: var(--size-hero); margin-bottom: 1.5rem; }
+            .hero-description { font-size: var(--size-body); max-width: 700px; }
+            
+            section { padding: 6rem 2rem; }
+            
+            /* About Desktop */
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 1.2fr;
+                gap: 4rem;
+                align-items: start;
+            }
+            
+            /* Services Desktop */
+            .section-header { margin-bottom: 4rem; }
+            
+            .services-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 2rem;
+            }
+            
+            .service-card { margin-bottom: 0; padding: 2rem; }
+            
+            /* Strategy Desktop */
+            .strategy-tools {
+                display: block;
+                margin-top: 20px;
+                padding-top: 20px;
+                border-top: 1px solid var(--color-cloud);
+            }
+            
+            .strategy-tools a {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                color: var(--color-link);
+                font-size: var(--size-body);
+                font-weight: 500;
+            }
+            
+            .strategy-tools a:hover { color: var(--color-link-hover); }
+            .strategy-tools svg { width: 18px; height: 18px; }
+            
+            .strategy-intro {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                margin-bottom: 4rem;
+            }
+            
+            .pillars {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .pillar { margin-bottom: 0; padding: 2rem; }
+            .pillar-number { font-size: 56px; }
+            
+            /* Team Desktop */
+            .team-card {
+                display: grid;
+                grid-template-columns: 280px 1fr;
+                margin-bottom: 2rem;
+            }
+            
+            .team-image { height: 100%; min-height: 320px; }
+            .team-info { padding: 2rem; display: flex; flex-direction: column; justify-content: center; }
+            
+            .team-advisors {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .team-advisors .team-card {
+                grid-template-columns: 1fr;
+                margin-bottom: 0;
+            }
+            
+            .team-advisors .team-image { height: 320px; }
+            
+            /* Insights Desktop */
+            .insights-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-end;
+            }
+            
+            .insights-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .insight-card {
+                margin-bottom: 0;
+                padding: 2rem;
+                border-left: none;
+                border: 1px solid var(--color-cloud);
+            }
+            
+            .insight-card:hover { border-color: var(--color-primary); }
+            .insight-card h4 { min-height: 3.4em; }
+            
+            /* Footer Desktop */
+            footer { padding: 3rem 2rem; }
+            
+            .footer-inner {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 1400px;
+                margin: 0 auto;
+            }
+            
+            .footer-right {
+                display: flex;
+                align-items: center;
+                gap: 3rem;
+            }
+            
+            .footer-links { margin-bottom: 0; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <div class="nav-inner">
+        <a href="index.html">
+            <img src="logo.png" alt="Denaris Capital">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li class="nav-dropdown">
+                <a href="#strategy">Strategy</a>
+                <div class="nav-dropdown-menu">
+                    <a href="calculator.html">Property Deal Analyzer →</a>
+                </div>
+            </li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#insights">Insights</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="container">
+        <h1>Capital that <span class="accent italic">endures</span></h1>
+        <p class="hero-description">
+            Denaris Capital is a global real estate investment firm <span class="accent italic">committed</span> to delivering durable, long-term returns through disciplined capital allocation and portfolio management.
+        </p>
+        <a href="#about" class="hero-cta">
+            Explore Our Foundation →
+        </a>
+    </div>
+    <div class="hero-decoration">
+        <img src="favicon.png" alt="" aria-hidden="true">
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div>
+                <div class="section-label">Our Foundation</div>
+                <h2>The Denarius Principle</h2>
+            </div>
+            <div>
+                <p>The Roman denarius stands as a historical symbol of value, but also as a lesson in its fragility. We adopted this name to underscore our duty to protect capital from the subtle forces of erosion.</p>
+                <div class="quote">
+                    <p>"Guided by integrity, transparency, and innovation, we seek to deliver superior risk-adjusted outcomes while adapting to the evolving financial landscape."</p>
+                    <span class="quote-attribution">— Alejandro</span>
+                </div>
+                <p>Our team combines investment banking and private equity expertise with entrepreneurial vision. Through our international network, we originate exclusive opportunities and deliver tailored capital solutions across Latin America and beyond.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">What We Do</div>
+            <h2>Core Competencies</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Real Estate</h3>
+                <p>USD-denominated multifamily and commercial assets in strategic U.S. markets with attractive risk-adjusted returns.</p>
+            </div>
+            <div class="service-card">
+                <h3>Asset Management</h3>
+                <p>Proprietary capital allocation with institutional discipline and family office flexibility.</p>
+            </div>
+            <div class="service-card">
+                <h3>Private Credit</h3>
+                <p>Alternative assets and structured credit solutions across Mexican and U.S. markets.</p>
+            </div>
+            <div class="service-card">
+                <h3>Global Research</h3>
+                <p>Macro analysis and cross-border insights informing capital deployment decisions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="strategy" id="strategy">
+    <div class="container">
+        <div class="strategy-intro">
+            <div>
+                <div class="section-label">Investment Philosophy</div>
+                <h2>Pillars of Disciplined Allocation</h2>
+                <div class="strategy-tools">
+                    <a href="calculator.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z" />
+                        </svg>
+                        Property Deal Analyzer →
+                    </a>
+                </div>
+            </div>
+            <div class="strategy-text">
+                <p>Denaris Capital allocates capital with the primary objective of preservation across cycles and the secondary objective of compounding through disciplined reinvestment.</p>
+                <p>We operate from the conviction that superior long-term outcomes are driven less by forecast accuracy than by risk control, structural patience, and the ability to act when market conditions temporarily diverge from fundamentals.</p>
+                <p class="strategy-emphasis">Capital is deployed only where downside risks can be explicitly identified, priced, and managed.</p>
+            </div>
+        </div>
+        <div class="pillars">
+            <div class="pillar">
+                <div class="pillar-number">01</div>
+                <h3>Macro Dislocation</h3>
+                <p>Identify and capitalize on inefficiencies created by shifts in global liquidity, interest rate regimes, and capital flows.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-number">02</div>
+                <h3>Structural Themes</h3>
+                <p>Capital positioned behind long-duration forces including demographic shifts, supply-chain reconfiguration, and nearshoring dynamics.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-number">03</div>
+                <h3>Cross-Border Arbitrage</h3>
+                <p>Operating at the intersection of the United States and Mexico, we identify valuation gaps and financing inefficiencies.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-number">04</div>
+                <h3>Downside Focus</h3>
+                <p>Capital preservation is treated as a prerequisite, not an outcome. Portfolios withstand adverse scenarios.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team" id="team">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Leadership</div>
+            <h2>Our Team</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-image">
+                    <img src="alejandro.png" alt="Alejandro Villarreal De La Garza">
+                </div>
+                <div class="team-info">
+                    <h3>Alejandro Villarreal De La Garza</h3>
+                    <span class="team-role">Founder & Managing Partner</span>
+                    <p>Alejandro founded Denaris Capital to formalize a disciplined approach to cross-border real asset investment grounded in capital preservation and macro-aware underwriting.</p>
+                    <p>His experience spans U.S. real estate underwriting, acquisition analysis, and proprietary financial modeling.</p>
+                </div>
+            </div>
+            <div class="team-advisors">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="mauricio.png" alt="Mauricio Jannet Tamez">
+                    </div>
+                    <div class="team-info">
+                        <h3>Mauricio Jannet Tamez</h3>
+                        <span class="team-role">Senior Advisor — Capital Markets</span>
+                        <p>Mauricio brings over 25 years of experience in real estate finance and asset management across Latin America.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="bernardo.png" alt="Bernardo Duarte Rodriguez">
+                    </div>
+                    <div class="team-info">
+                        <h3>Bernardo Duarte Rodriguez</h3>
+                        <span class="team-role">Senior Advisor — Strategic Investments</span>
+                        <p>Bernardo brings over a decade of experience in infrastructure finance and principal investing across Latin America.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="insights" id="insights">
+    <div class="container">
+        <div class="insights-header">
+            <div>
+                <div class="section-label">Insights</div>
+            </div>
+            <a href="insights.html" class="insights-link">View All Insights →</a>
+        </div>
+        <div class="insights-grid">
+            <a href="the-cost-of-formality.html" class="insight-card">
+                <div class="insight-date">January 7, 2026</div>
+                <div class="insight-category">Economic Analysis</div>
+                <h4>The Cost of Formality</h4>
+                <p>Examining friction premium in Mexican markets.</p>
+            </a>
+            <a href="crowded-lanes-and-congested-capital.html" class="insight-card">
+                <div class="insight-date">December 15, 2025</div>
+                <div class="insight-category">Market Commentary</div>
+                <h4>Crowded Lanes and Congested Capital</h4>
+                <p>How excess liquidity creates inefficiencies.</p>
+            </a>
+            <a href="the-house-always-wins.html" class="insight-card">
+                <div class="insight-date">November 28, 2025</div>
+                <div class="insight-category">Investment Strategy</div>
+                <h4>The House Always Wins</h4>
+                <p>Understanding asymmetric risk in real estate.</p>
+            </a>
+            <a href="the-denarius-principle.html" class="insight-card">
+                <div class="insight-date">October 10, 2025</div>
+                <div class="insight-category">Philosophy</div>
+                <h4>The Denarius Principle</h4>
+                <p>Why capital preservation must come first.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <div class="footer-left">
+                <a href="index.html" class="footer-logo">
+                    <img src="logo.png" alt="Denaris Capital">
+                </a>
+            </div>
+            <div class="footer-right">
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="insights.html">Insights</a>
+                    <a href="calculator.html">Property Analyzer</a>
+                </div>
+                <div class="footer-info">
+                    <div class="footer-address">Monterrey, N.L., Mexico</div>
+                    <div class="footer-copy">© 2026 Denaris Capital</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<nav class="bottom-nav">
+    <a href="#about">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+        About
+    </a>
+    <a href="#services">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 018.25 20.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+        Services
+    </a>
+    <a href="#strategy">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+        Strategy
+    </a>
+    <a href="#team">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+        Team
+    </a>
+    <a href="calculator.html">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zM8.25 6h7.5v2.25h-7.5V6zM12 2.25c-1.892 0-3.758.11-5.593.322C5.307 2.7 4.5 3.65 4.5 4.757V19.5a2.25 2.25 0 002.25 2.25h10.5a2.25 2.25 0 002.25-2.25V4.757c0-1.108-.806-2.057-1.907-2.185A48.507 48.507 0 0012 2.25z"/></svg>
+        Analyzer
+    </a>
+</nav>
+
+</body>
+</html>

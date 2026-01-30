@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights | Denaris Capital</title>
+    <meta name="description" content="Investment insights and market commentary from Denaris Capital.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* LOCKED COLOR PALETTE */
+            --color-heading: #1F1F1F;
+            --color-body: #4A4A4A;
+            --color-secondary: #7A7A7A;
+            --color-quote: #4A36BC;
+            --color-link: #2F2F2F;
+            --color-link-hover: #6A6A6A;
+            --color-primary: #5046E5;
+            --color-cloud: #c4cdd6;
+            --color-ivory: #f5f3ef;
+            --color-paper: #faf9f7;
+            
+            /* LOCKED TYPOGRAPHY */
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --size-hero: 48px;
+            --size-section: 32px;
+            --size-subheading: 22px;
+            --size-body: 16px;
+            --size-meta: 14px;
+            --size-caption: 12px;
+            --lh-hero: 1.15;
+            --lh-section: 1.25;
+            --lh-subheading: 1.35;
+            --lh-body: 1.65;
+            --lh-meta: 1.6;
+            --lh-caption: 1.4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-display);
+            background: var(--color-paper);
+            color: var(--color-body);
+            font-size: var(--size-body);
+            line-height: var(--lh-body);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            background: rgba(250, 249, 247, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--color-cloud);
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img { height: 36px; }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: var(--font-display);
+            font-size: var(--size-meta);
+            color: var(--color-body);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover { color: var(--color-primary); }
+
+        /* Page Header */
+        .page-header {
+            padding: 8rem 2rem 3rem;
+            background: linear-gradient(135deg, var(--color-paper) 0%, var(--color-ivory) 100%);
+        }
+
+        .page-header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: var(--size-caption);
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            line-height: var(--lh-caption);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: var(--size-hero);
+            font-weight: 300;
+            color: var(--color-heading);
+            line-height: var(--lh-hero);
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-family: var(--font-display);
+            font-size: var(--size-body);
+            color: var(--color-body);
+            max-width: 600px;
+            line-height: var(--lh-body);
+        }
+
+        /* Insights Grid */
+        .insights-section {
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .insight-card {
+            background: white;
+            border: 1px solid var(--color-cloud);
+            padding: 2rem;
+            text-decoration: none;
+            display: block;
+            transition: border-color 0.3s;
+        }
+
+        .insight-card:hover { border-color: var(--color-primary); }
+
+        .insight-date {
+            font-family: var(--font-display);
+            font-size: var(--size-caption);
+            color: var(--color-secondary);
+            line-height: var(--lh-caption);
+        }
+
+        .insight-category {
+            font-family: var(--font-display);
+            font-size: var(--size-caption);
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+            line-height: var(--lh-caption);
+        }
+
+        .insight-card h3 {
+            font-family: var(--font-display);
+            font-size: var(--size-subheading);
+            font-weight: 400;
+            color: var(--color-heading);
+            margin-bottom: 0.75rem;
+            line-height: var(--lh-subheading);
+        }
+
+        .insight-card p {
+            font-family: var(--font-display);
+            font-size: var(--size-meta);
+            color: var(--color-body);
+            line-height: var(--lh-meta);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: var(--color-paper);
+            border-top: 1px solid var(--color-cloud);
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo img { height: 28px; }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-family: var(--font-display);
+            font-size: var(--size-meta);
+            color: var(--color-secondary);
+            text-decoration: none;
+            line-height: var(--lh-meta);
+        }
+
+        .footer-links a:hover { color: var(--color-link-hover); }
+
+        .footer-copy {
+            font-family: var(--font-display);
+            font-size: var(--size-meta);
+            color: var(--color-secondary);
+            line-height: var(--lh-meta);
+        }
+
+        /* Mobile */
+        @media (max-width: 1024px) {
+            .nav-links { display: none; }
+            .page-header { padding: 6rem 1.5rem 2rem; }
+            .page-header h1 { font-size: 36px; }
+            .insights-section { padding: 2rem 1.5rem; }
+            .insights-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+        }
+
+        @media (max-width: 640px) {
+            .footer-inner {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Denaris Capital">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#strategy">Strategy</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="insights.html">Insights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="page-header-inner">
+            <div class="section-label">Research & Commentary</div>
+            <h1>Insights</h1>
+            <p>Investment perspectives, market analysis, and strategic commentary from the Denaris Capital team.</p>
+        </div>
+    </header>
+
+    <section class="insights-section">
+        <div class="insights-grid">
+            <a href="the-cost-of-formality.html" class="insight-card">
+                <div class="insight-date">January 7, 2026</div>
+                <div class="insight-category">Economic Analysis</div>
+                <h3>The Cost of Formality</h3>
+                <p>Examining the friction premium embedded in Mexican markets and its implications for cross-border capital flows.</p>
+            </a>
+            <a href="crowded-lanes-and-congested-capital.html" class="insight-card">
+                <div class="insight-date">December 15, 2025</div>
+                <div class="insight-category">Market Commentary</div>
+                <h3>Crowded Lanes and Congested Capital</h3>
+                <p>How excess liquidity creates structural inefficiencies in traditional markets.</p>
+            </a>
+            <a href="the-house-always-wins.html" class="insight-card">
+                <div class="insight-date">November 28, 2025</div>
+                <div class="insight-category">Investment Strategy</div>
+                <h3>The House Always Wins</h3>
+                <p>Understanding asymmetric risk profiles in real estate investment.</p>
+            </a>
+            <a href="the-denarius-principle.html" class="insight-card">
+                <div class="insight-date">October 10, 2025</div>
+                <div class="insight-category">Philosophy</div>
+                <h3>The Denarius Principle</h3>
+                <p>Why capital preservation must come first in any investment framework.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <a href="index.html" class="footer-logo">
+                <img src="logo.png" alt="Denaris Capital">
+            </a>
+            <ul class="footer-links">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="calculator.html">Property Analyzer</a></li>
+            </ul>
+            <div class="footer-copy">© 2026 Denaris Capital</div>
+        </div>
+    </footer>
+</body>
+</html>
